@@ -6569,11 +6569,6 @@ what is exception?
 --> an exception is an event (action) which is raised during the execution of a
     program and which distrupts the normal flow of execution.
 
-                      (or)
-
---> whenever any unwanted or unexpected event is raised in a program due to which
-    the smooth execution of a program is interrted that event is called as an 
-    exception.
 
 what is exception handling?
 
@@ -6662,7 +6657,7 @@ try :
 --> it is used to write risky code.
 
 catch :
------
+-------
 --> it is used to write handling code.
 
 finally :
