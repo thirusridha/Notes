@@ -435,6 +435,7 @@ type means datatype
 
 casting means conversion
 
+
 type casting :
 ------------
 - it is a process of converting one datatype to another datatype.
