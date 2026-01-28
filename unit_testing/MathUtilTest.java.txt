@@ -1,0 +1,96 @@
+package com.junit.examples;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class MathUtilTest {
+
+    private MathUtil mathUtil;
+
+    @BeforeEach
+    void setUp() {
+        mathUtil = new MathUtil();
+    }
+
+    // ---------- add() ----------
+    @Test
+    void testAdd() {
+        assertEquals(10, mathUtil.add(5, 5));
+        assertEquals(-2, mathUtil.add(-1, -1));
+    }
+
+    // ---------- isEven() ----------
+    @Test
+    void testIsEven() {
+        assertTrue(mathUtil.isEven(4));
+        assertFalse(mathUtil.isEven(5));
+    }
+
+    // ---------- multiply() ----------
+    @Test
+    void testMultiply() {
+        assertEquals(20, mathUtil.multiply(4, 5));
+        assertEquals(0, mathUtil.multiply(0, 10));
+    }
+
+    // ---------- isPrime() ----------
+    @Test
+    void testIsPrime() {
+        assertTrue(mathUtil.isPrime(2));
+        assertTrue(mathUtil.isPrime(7));
+        assertFalse(mathUtil.isPrime(1));
+        assertFalse(mathUtil.isPrime(9));
+    }
+
+    // ---------- getPrimesBetween() ----------
+    @Test
+    void testGetPrimesBetween() {
+        List<Integer> expected = Arrays.asList(2, 3, 5, 7);
+        assertEquals(expected, mathUtil.getPrimesBetween(1, 10));
+    }
+
+    @Test
+    void testGetPrimesBetween_StartGreaterThanEnd() {
+        assertTrue(mathUtil.getPrimesBetween(10, 1).isEmpty());
+    }
+
+    // ---------- reverseStringPublic() (tests private method indirectly) ----------
+    @Test
+    void testReverseStringPublic() {
+        assertEquals("olleh", mathUtil.reverseStringPublic("hello"));
+        assertEquals("", mathUtil.reverseStringPublic(""));
+    }
+
+    // ---------- countVowels() ----------
+    @Test
+    void testCountVowels() {
+        assertEquals(5, mathUtil.countVowels("Education"));
+        assertEquals(0, mathUtil.countVowels("bcdf"));
+        assertEquals(0, mathUtil.countVowels(null));
+    }
+
+    // ---------- findSecondLargest() ----------
+    @Test
+    void testFindSecondLargest() {
+        int[] arr = {10, 5, 20, 8};
+        assertEquals(10, mathUtil.findSecondLargest(arr));
+    }
+
+    @Test
+    void testFindSecondLargest_WithDuplicates() {
+        int[] arr = {5, 5, 10};
+        assertEquals(5, mathUtil.findSecondLargest(arr));
+    }
+
+    @Test
+    void testFindSecondLargest_Exception() {
+        int[] arr = {5};
+        assertThrows(IllegalArgumentException.class,
+                () -> mathUtil.findSecondLargest(arr));
+    }
+}

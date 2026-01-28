@@ -1,0 +1,104 @@
+package com.junit.examples;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class MathUtil {
+
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public boolean isEven(int number) {
+        return number % 2 == 0;
+    }
+
+    public int multiply(int a, int b) {
+        return a * b;
+    }
+
+    public List<Integer> getPrimesBetween(int start, int end) {
+        List<Integer> primes = new ArrayList<>();
+
+        if (start > end) {
+            return primes;
+        }
+
+        for (int i = Math.max(start, 2); i <= end; i++) {
+            if (isPrime(i)) {
+                primes.add(i);
+            }
+        }
+        return primes;
+    }
+
+    public boolean isPrime(int number) {
+        if (number <= 1) {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private String reverseString(String string) {
+        String str = "";
+        for (int i = string.length() - 1; i >= 0; i--) {
+            str = str.concat("" + string.charAt(i));
+        }
+        return str;
+    }
+
+    public Integer countVowels(String str) {
+        Integer count = 0;
+
+        if (str == null || str.equals("")) {
+            return 0;
+        }
+
+        str = str.toLowerCase();
+        for (char ch : str.toCharArray()) {
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                count = count + 1;
+            }
+        }
+        return count;
+    }
+
+    public int findSecondLargest(int[] arr) {
+        if (arr.length < 2 || arr == null) {
+            throw new IllegalArgumentException("Array must contains atleast two elements");
+        }
+
+        Integer largest = null;
+        Integer secondLargest = null; // 5 5 5
+
+        for (int n : arr) {
+            if (largest == null || n > largest) {
+                if (largest != null && n != largest) {
+                    secondLargest = largest;
+                }
+                largest = n;
+            } else if (n != largest && (secondLargest == null || n > secondLargest)) {
+                secondLargest = n;
+            }
+        }
+
+        if (secondLargest == null) {
+            throw new IllegalArgumentException("");
+        }
+
+        return secondLargest;
+    }
+
+    public String reverseStringPublic(String string) {
+        return reverseString(string);
+    }
+}
